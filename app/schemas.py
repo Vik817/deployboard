@@ -40,5 +40,11 @@ class DeploymentRead(BaseModel):
     status: DeploymentStatus
     exit_code: int | None
     commit_ref: str | None
+    logs: str | None
     started_at: datetime.datetime
     finished_at: datetime.datetime | None
+
+
+class DeploymentCreate(BaseModel):
+    """Optional body when triggering a deploy. commit_ref records what shipped."""
+    commit_ref: str | None = None
