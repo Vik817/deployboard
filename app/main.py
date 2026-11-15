@@ -18,12 +18,6 @@ from .database import Base, engine, get_db
 from . import models, schemas
 from .deploys import run_deployment
 
-# DEV-ONLY shortcut: auto-create tables on startup. This is fine for the v1
-# skeleton but is NOT how schema should be managed in production — it can't
-# handle schema changes safely (drift / data loss). TODO(next phase): replace
-# with migrations (Alembic — the SQLAlchemy equivalent of Liquibase).
-Base.metadata.create_all(bind=engine)
-
 app = FastAPI(title="DeployBoard", version="0.1.0")
 
 
